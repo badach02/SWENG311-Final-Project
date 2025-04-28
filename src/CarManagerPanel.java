@@ -16,7 +16,7 @@ public class CarManagerPanel extends JPanel {
     private void setupUI() {
         setLayout(new BorderLayout());
 
-        String[] columnNames = {"Model", "Year", "Rented", "Renter"};
+        String[] columnNames = {"Make", "Model", "Year", "Rented"};
         tableModel = new DefaultTableModel(columnNames, 0);
 
         carTable = new JTable(tableModel);

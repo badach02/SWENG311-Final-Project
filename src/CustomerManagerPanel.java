@@ -7,6 +7,7 @@ public class CustomerManagerPanel extends JPanel {
     private DefaultListModel<Customer> customerListModel;
     private JList<Customer> customerList;
     private List<Receipt> receiptList;
+    private RentCarPanel rentPanel;
 
     public CustomerManagerPanel(List<Customer> customers, List<Receipt> receipts) {
         this.receiptList = receipts;
@@ -25,6 +26,7 @@ public class CustomerManagerPanel extends JPanel {
             String name = JOptionPane.showInputDialog("Enter Customer Name:");
             int id = Integer.parseInt(JOptionPane.showInputDialog("Enter Customer ID:"));
             customerListModel.addElement(new Customer(name, id));
+            rentPanel.updateLists();
         });
 
         removeButton.addActionListener(e -> {
@@ -37,6 +39,7 @@ public class CustomerManagerPanel extends JPanel {
                     customerListModel.removeElement(selectedCustomer);
                 }
             }
+            rentPanel.updateLists();
         });
 
         setLayout(new BorderLayout());
@@ -49,5 +52,9 @@ public class CustomerManagerPanel extends JPanel {
 
     public List<Customer> getCustomers() {
         return Collections.list(customerListModel.elements());
+    }
+
+    public void setRentPanel(RentCarPanel rentPanel){
+        this.rentPanel = rentPanel;
     }
 }

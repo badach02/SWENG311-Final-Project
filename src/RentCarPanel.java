@@ -12,14 +12,14 @@ public class RentCarPanel extends JPanel {
     private final JList<Customer> customerList;
     private final CarManagerPanel carPanel;
     private final List<Receipt> receipts;
-    private final List<Customer> customers;
     private final ReceiptManagerPanel receiptPanel;
+    private final CustomerManagerPanel customerPanel;
 
     public RentCarPanel(CarManagerPanel carPanel, CustomerManagerPanel customerPanel, ReceiptManagerPanel receiptPanel) {
         this.carPanel = carPanel;
         this.receiptPanel = receiptPanel;
+        this.customerPanel = customerPanel;
         this.receipts = receiptPanel.getReceipts();
-        this.customers = customerPanel.getCustomers();
         setLayout(new BorderLayout());
 
         availableCarsModel = new DefaultListModel<>();
@@ -75,7 +75,7 @@ public class RentCarPanel extends JPanel {
         }
 
         customerListModel.clear();
-        for (Customer customer : customers) {
+        for (Customer customer : customerPanel.getCustomers()) {
             customerListModel.addElement(customer);
         }
 
