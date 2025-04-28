@@ -7,8 +7,10 @@ import java.util.List;
 public class CustomerManagerPanel extends JPanel {
     private DefaultListModel<Customer> customerListModel;
     private JList<Customer> customerList;
+    private List<Receipt> receiptList;
 
-    public CustomerManagerPanel(List<Customer> customers) {
+    public CustomerManagerPanel(List<Customer> customers, List<Receipt> receipts) {
+        this.receiptList = receipts;
         customerListModel = new DefaultListModel<>();
         for (Customer c : customers) {
             customerListModel.addElement(c);
@@ -20,18 +22,19 @@ public class CustomerManagerPanel extends JPanel {
         JButton addButton = new JButton("Add Customer");
         JButton removeButton = new JButton("Remove Customer");
 
-        addButton.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                String name = JOptionPane.showInputDialog("Enter Customer Name:");
-                int id = Integer.parseInt(JOptionPane.showInputDialog("Enter Customer ID:"));
-                customerListModel.addElement(new Customer(name, id));
-            }
+        addButton.addActionListener(e -> {
+            String name = JOptionPane.showInputDialog("Enter Customer Name:");
+            int id = Integer.parseInt(JOptionPane.showInputDialog("Enter Customer ID:"));
+            customerListModel.addElement(new Customer(name, id));
         });
 
-        removeButton.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                Customer selectedCustomer = customerList.getSelectedValue();
-                if (selectedCustomer != null) {
+        removeButton.addActionListener(e -> {
+            Customer selectedCustomer = customerList.getSelectedValue();
+            if (selectedCustomer != null) {
+                boolean isRenting = receiptList.stream().anyMatch(r -> r.getCustomer().equals(selectedCustomer) && r.getCar().isRented());
+                if (isRenting) {
+                    JOptionPane.showMessageDialog(this, "Customer is currently renting a car and cannot be removed.");
+                } else {
                     customerListModel.removeElement(selectedCustomer);
                 }
             }
