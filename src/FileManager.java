@@ -29,18 +29,14 @@ class FileManager {
 
     public static void saveCars(List<Car> cars) throws IOException {
         BufferedWriter bw = new BufferedWriter(new FileWriter("data/cars.txt"));
-        
-        // Loop through each car and save its details
+
         for (Car car : cars) {
-            // If the car is rented, get the renter's name; if not, leave it empty
             String renter = car.isRented() && car.getRenter() != null ? car.getRenter().getName() : "null";
             
-            // Write car details to file
             bw.write(car.getMake() + "," + car.getModel() + "," + car.getYear() + "," + car.isRented() + "," + renter);
-            bw.newLine();  // Add a new line for each car
+            bw.newLine();
         }
-        
-        // Close the BufferedWriter
+
         bw.close();
     }
 
@@ -52,7 +48,7 @@ class FileManager {
         try (BufferedReader br = new BufferedReader(new FileReader(file))) {
             String line;
             while ((line = br.readLine()) != null) {
-                String[] parts = line.split(",", 5);  // Allow model to contain commas
+                String[] parts = line.split(",", 5); 
                 
                 if (parts.length == 5) {
                     String make = parts[0].trim();
@@ -89,7 +85,7 @@ class FileManager {
                 return customer;
             }
         }
-        return null;  // Return null if no customer found with the given name
+        return null;
     }
     
 
@@ -107,20 +103,14 @@ class FileManager {
             while ((line = br.readLine()) != null) {
                 String[] parts = line.split("::");
                 if (parts.length == 3) {
-                    // Parse customer
                     String[] customerParts = parts[0].split(",");
                     if (customerParts.length != 2) continue;
                     String customerName = customerParts[0].trim();
                     int customerId = Integer.parseInt(customerParts[1].trim());
                     Customer customer = new Customer(customerName, customerId);
-    
-                    // Parse car model (and maybe year if encoded later)
                     String carModel = parts[1].trim();
-                    Car car = new Car("Unknown", carModel, 0); // Set year = 0 if unknown, mark as rented
-    
-                    // Parse price
+                    Car car = new Car("Unknown", carModel, 0);
                     double price = Double.parseDouble(parts[2].trim());
-    
                     receipts.add(new Receipt(customer, car, price));
                 } else {
                     System.out.println("Skipping malformed receipt line: " + line);
@@ -132,12 +122,10 @@ class FileManager {
         return receipts;
     }
     
-
     public static void saveReceipts(List<Receipt> receipts) throws IOException {
         BufferedWriter writer = new BufferedWriter(new FileWriter("data/receipts.txt"));
 
         for (Receipt receipt : receipts) {
-            // Save customer ID, car model, and price to the file
             writer.write(receipt.getCustomer().getName() + "," +
                          receipt.getCustomer().getId() + "::" +
                          receipt.getCar().getModel() + "::" +

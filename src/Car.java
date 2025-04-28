@@ -5,9 +5,8 @@ public class Car {
     private String model;
     private int year;
     private boolean isRented;
-    private Customer renter;  // Track the customer renting the car
+    private Customer renter;
 
-    // Constructor
     public Car(String make, String model, int year) {
         this.make = make;
         this.model = model;
@@ -16,7 +15,6 @@ public class Car {
         this.renter = null;
     }
 
-    // Getters and Setters
     public String getMake() {
         return make;
     }
