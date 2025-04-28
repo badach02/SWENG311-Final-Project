@@ -1,6 +1,5 @@
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.*;
 import java.io.IOException;
 import java.util.List;
 
@@ -141,8 +140,6 @@ public class RentCarPanel extends JPanel {
             Customer renter = selectedRentedCar.getRenter();
             String renterName = renter.getName();
             String carModel = selectedRentedCar.getModel();
-            int carYear = selectedRentedCar.getYear();
-            
             boolean carReturned = false;
     
             System.out.println("Selected car: " + selectedRentedCar);

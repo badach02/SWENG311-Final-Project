@@ -1,7 +1,6 @@
 import javax.swing.*;
 import java.awt.*;
 import javax.swing.table.*;
-import java.util.*;
 import java.util.List;
 
 public class CarManagerPanel extends JPanel {
