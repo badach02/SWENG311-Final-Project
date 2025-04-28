@@ -28,6 +28,7 @@ public class Main {
                 
                 // Update RentCarPanel with the correct customer list
                 customerPanel.setRentPanel(rentPanel);
+                carPanel.setRentPanel(rentPanel);
 
                 JTabbedPane tabs = new JTabbedPane();
                 tabs.addTab("Customers", customerPanel);

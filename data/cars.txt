@@ -3,3 +3,4 @@ Ford,Mustang,2019,false,null
 BMW,3 Series,2022,true,Jake
 Mercedes,Benz,2019,false,null
 Hyundai,Elantra,2020,true,Jake
+Ford,Mustang,2025,false,null
