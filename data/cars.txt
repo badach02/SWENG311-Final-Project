@@ -1,6 +1,6 @@
 Toyota,Corolla,2020,false,null
 Ford,Mustang,2019,false,null
-BMW,3 Series,2022,true,Jake
+BMW,3 Series,2022,false,null
 Mercedes,Benz,2019,false,null
-Hyundai,Elantra,2020,true,Jake
+Hyundai,Elantra,2020,false,null
 Ford,Mustang,2025,false,null

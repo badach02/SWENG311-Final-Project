@@ -1,2 +1,0 @@
-Jake,1010::3 Series::10.0
-Jake,1010::Elantra::672.0
