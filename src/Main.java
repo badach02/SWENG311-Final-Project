@@ -45,7 +45,7 @@ public class Main {
                 frame.addWindowListener(new WindowAdapter() {
                     public void windowClosing(WindowEvent e) {
                         try {
-                            FileManager.saveCustomers(customers);
+                            FileManager.saveCustomers(customerPanel.getCustomers());
                             FileManager.saveCars(cars);
                             FileManager.saveReceipts(receipts);
                         } catch (IOException ex) {

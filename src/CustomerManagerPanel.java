@@ -29,18 +29,7 @@ public class CustomerManagerPanel extends JPanel {
             rentPanel.updateLists();
         });
 
-        removeButton.addActionListener(e -> {
-            Customer selectedCustomer = customerList.getSelectedValue();
-            if (selectedCustomer != null) {
-                boolean isRenting = receiptList.stream().anyMatch(r -> r.getCustomer().equals(selectedCustomer) && r.getCar().isRented());
-                if (isRenting) {
-                    JOptionPane.showMessageDialog(this, "Customer is currently renting a car and cannot be removed.");
-                } else {
-                    customerListModel.removeElement(selectedCustomer);
-                }
-            }
-            rentPanel.updateLists();
-        });
+        removeButton.addActionListener(e -> removeCustomer());
 
         setLayout(new BorderLayout());
         add(scrollPane, BorderLayout.CENTER);
@@ -48,6 +37,29 @@ public class CustomerManagerPanel extends JPanel {
         buttonPanel.add(addButton);
         buttonPanel.add(removeButton);
         add(buttonPanel, BorderLayout.SOUTH);
+    }
+
+    public void removeCustomer(){
+        Customer selectedCustomer = customerList.getSelectedValue();
+        boolean rented = false;
+
+        if (selectedCustomer != null) {
+
+            for(Receipt receipt : receiptList){ 
+                if(receipt.toString().contains(selectedCustomer.getName())){
+                    System.out.println("Found " + selectedCustomer.getName());
+                    rented = true;
+                }
+            }
+
+            if (rented == true) {
+                JOptionPane.showMessageDialog(this, "Customer is currently renting a car and cannot be removed.");
+            } else {
+                System.out.println("Removed customer");
+                customerListModel.removeElement(selectedCustomer);
+            }
+        }
+        rentPanel.updateLists();
     }
 
     public List<Customer> getCustomers() {

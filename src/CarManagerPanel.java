@@ -94,14 +94,18 @@ public class CarManagerPanel extends JPanel {
 
     private void removeSelectedCar() {
         int selectedRow = carTable.getSelectedRow();
+        Car carToRemove = cars.get(selectedRow);
+
         if (selectedRow == -1) {
             JOptionPane.showMessageDialog(this, "Please select a car to remove.");
             return;
+        } else if(carToRemove.isRented() == true){
+            JOptionPane.showMessageDialog(this, "Cannot delete a currently rented car.");
+        } else{
+            cars.remove(carToRemove);
+            refreshTable();
         }
 
-        Car carToRemove = cars.get(selectedRow);
-        cars.remove(carToRemove);
-        refreshTable();
         rentPanel.updateLists();
     }
 

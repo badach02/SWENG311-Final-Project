@@ -130,6 +130,8 @@ public class RentCarPanel extends JPanel {
                     selectedRentedCar.setRented(false);
                     selectedRentedCar.setRenter(null);
                     receipts.remove(receipt);
+                    receiptPanel.updateReceiptsList();
+                    System.out.println("Deleted receipt: " + receipt);
                     carReturned = true;
                     break;
                 }
