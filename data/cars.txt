@@ -4,3 +4,4 @@ BMW,3 Series,2022,true,Alice
 Mercedes,Benz,2019,true,Diana
 Hyundai,Elantra,2020,true,Frank
 Ford,Mustang,2025,false,null
+Nissan,Sentra,2017,true,Andre

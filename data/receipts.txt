@@ -1,3 +1,4 @@
 Diana,1004::Benz::100.0
 Frank,1006::Elantra::200.0
 Alice,1001::3 Series::150.0
+Andre,5696922::Sentra::99.0
