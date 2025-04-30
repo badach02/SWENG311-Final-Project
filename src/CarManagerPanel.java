@@ -19,14 +19,12 @@ public class CarManagerPanel extends JPanel {
     private void setupUI() {
         setLayout(new BorderLayout());
     
-        // Table setup
         String[] columnNames = {"Make", "Model", "Year", "Rented"};
         tableModel = new DefaultTableModel(columnNames, 0);
         carTable = new JTable(tableModel);
         JScrollPane scrollPane = new JScrollPane(carTable);
         add(scrollPane, BorderLayout.CENTER);
-        
-        // === Input fields panel ===
+
         JPanel inputFieldsPanel = new JPanel(new GridLayout(1, 6, 10, 0));
         inputFieldsPanel.setBorder(BorderFactory.createEmptyBorder(10, 0, 0, 10));
         
@@ -42,22 +40,19 @@ public class CarManagerPanel extends JPanel {
         yearField = new JTextField();
         inputFieldsPanel.add(yearField);
         
-        // === Buttons panel ===
-        JPanel buttonsPanel = new JPanel(new FlowLayout(FlowLayout.CENTER)); // Align buttons left
+        JPanel buttonsPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
         addButton = new JButton("Add Car");
         removeButton = new JButton("Remove Selected Car");
     
         buttonsPanel.add(addButton);
         buttonsPanel.add(removeButton);
         
-        // === South panel combines both ===
         JPanel southPanel = new JPanel(new BorderLayout());
         southPanel.add(inputFieldsPanel, BorderLayout.NORTH);
-        southPanel.add(buttonsPanel, BorderLayout.SOUTH); // Add the buttons panel here
+        southPanel.add(buttonsPanel, BorderLayout.SOUTH);
     
         add(southPanel, BorderLayout.SOUTH);
         
-        // === Action listeners ===
         addButton.addActionListener(e -> addCar());
         removeButton.addActionListener(e -> removeSelectedCar());        
     

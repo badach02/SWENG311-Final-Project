@@ -31,37 +31,29 @@ public class RentCarPanel extends JPanel {
     
         updateLists();
     
-                // Buttons
         JButton rentButton = new JButton("Rent Car");
         JButton returnButton = new JButton("Return Car");
 
-        // Optional: consistent size
         Dimension buttonSize = new Dimension(200, 40);
         rentButton.setPreferredSize(buttonSize);
         returnButton.setPreferredSize(buttonSize);
 
-        // Action listeners
         rentButton.addActionListener(e -> rentCar());
         returnButton.addActionListener(e -> returnCar());
 
-        // Rent Section (Left)
         JPanel rentSection = new JPanel(new BorderLayout());
 
-        // Header label
         JLabel rentHeader = new JLabel("Rent Car", SwingConstants.CENTER);
         rentHeader.setFont(new Font("SansSerif", Font.BOLD, 16));
         rentSection.add(rentHeader, BorderLayout.NORTH);
 
-        // List panel
         JPanel rentPanel = new JPanel(new GridLayout(1, 2));
         rentPanel.add(new JScrollPane(availableCarsList));
         rentPanel.add(new JScrollPane(customerList));
         rentSection.add(rentPanel, BorderLayout.CENTER);
 
-        // Button at bottom
         rentSection.add(rentButton, BorderLayout.SOUTH);
 
-        // Return Section (Right)
         JPanel returnSection = new JPanel(new BorderLayout());
 
         JLabel returnHeader = new JLabel("Return Car", SwingConstants.CENTER);
@@ -71,12 +63,10 @@ public class RentCarPanel extends JPanel {
         returnSection.add(new JScrollPane(rentedCarsList), BorderLayout.CENTER);
         returnSection.add(returnButton, BorderLayout.SOUTH);
 
-        // Main Panel
         JPanel mainPanel = new JPanel(new GridLayout(1, 2));
         mainPanel.add(rentSection);
         mainPanel.add(returnSection);
 
-        // Add to main frame/container
         add(mainPanel, BorderLayout.CENTER);
 
 

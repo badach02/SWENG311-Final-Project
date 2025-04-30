@@ -14,6 +14,11 @@ public class CustomerManagerPanel extends JPanel {
         this.receiptList = receipts;
         this.customers = customers;
 
+        setupUI();
+        refreshTable();
+    }
+
+    public void setupUI(){
         String[] columnNames = {"ID", "Name"};
         tableModel = new DefaultTableModel(columnNames, 0);
         customerTable = new JTable(tableModel);
@@ -32,8 +37,6 @@ public class CustomerManagerPanel extends JPanel {
         buttonPanel.add(addButton);
         buttonPanel.add(removeButton);
         add(buttonPanel, BorderLayout.SOUTH);
-
-        refreshTable();
     }
 
     public void addCustomer(){
