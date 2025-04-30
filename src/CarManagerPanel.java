@@ -18,38 +18,52 @@ public class CarManagerPanel extends JPanel {
 
     private void setupUI() {
         setLayout(new BorderLayout());
-
+    
+        // Table setup
         String[] columnNames = {"Make", "Model", "Year", "Rented"};
         tableModel = new DefaultTableModel(columnNames, 0);
         carTable = new JTable(tableModel);
         JScrollPane scrollPane = new JScrollPane(carTable);
         add(scrollPane, BorderLayout.CENTER);
-
-        JPanel inputPanel = new JPanel();
-        inputPanel.setLayout(new GridLayout(2, 4));
-        inputPanel.add(new JLabel("Make:"));
+        
+        // === Input fields panel ===
+        JPanel inputFieldsPanel = new JPanel(new GridLayout(1, 6, 10, 0));
+        inputFieldsPanel.setBorder(BorderFactory.createEmptyBorder(10, 0, 0, 10));
+        
+        inputFieldsPanel.add(new JLabel("Make:"));
         makeField = new JTextField();
-        inputPanel.add(makeField);
-        inputPanel.add(new JLabel("Model:"));
+        inputFieldsPanel.add(makeField);
+        
+        inputFieldsPanel.add(new JLabel("Model:"));
         modelField = new JTextField();
-        inputPanel.add(modelField);
-        inputPanel.add(new JLabel("Year:"));
+        inputFieldsPanel.add(modelField);
+        
+        inputFieldsPanel.add(new JLabel("Year:"));
         yearField = new JTextField();
-        inputPanel.add(yearField);
-
+        inputFieldsPanel.add(yearField);
+        
+        // === Buttons panel ===
+        JPanel buttonsPanel = new JPanel(new FlowLayout(FlowLayout.CENTER)); // Align buttons left
         addButton = new JButton("Add Car");
-        inputPanel.add(addButton);
-
         removeButton = new JButton("Remove Selected Car");
-        inputPanel.add(removeButton);
-        add(inputPanel, BorderLayout.SOUTH);
-
+    
+        buttonsPanel.add(addButton);
+        buttonsPanel.add(removeButton);
+        
+        // === South panel combines both ===
+        JPanel southPanel = new JPanel(new BorderLayout());
+        southPanel.add(inputFieldsPanel, BorderLayout.NORTH);
+        southPanel.add(buttonsPanel, BorderLayout.SOUTH); // Add the buttons panel here
+    
+        add(southPanel, BorderLayout.SOUTH);
+        
+        // === Action listeners ===
         addButton.addActionListener(e -> addCar());
-        removeButton.addActionListener(e -> removeSelectedCar());
-
+        removeButton.addActionListener(e -> removeSelectedCar());        
+    
         refreshTable();
     }
-
+    
     public List<Car> getCars() {
         return cars;
     }

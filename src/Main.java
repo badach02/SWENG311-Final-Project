@@ -27,7 +27,7 @@ public class Main {
                 JTabbedPane tabs = new JTabbedPane();
                 tabs.addTab("Customers", customerPanel);
                 tabs.addTab("Cars", carPanel);
-                tabs.addTab("Rent Car", rentPanel);
+                tabs.addTab("Manage Cars", rentPanel);
                 tabs.addTab("Receipts", receiptPanel);
 
                 LandingPagePanel landingPage = new LandingPagePanel();

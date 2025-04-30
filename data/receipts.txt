@@ -1,2 +1,3 @@
 Diana,1004::Benz::100.0
-Jake,1010::Mustang::200.0
+Frank,1006::Elantra::200.0
+Alice,1001::3 Series::150.0

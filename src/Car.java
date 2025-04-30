@@ -57,7 +57,12 @@ public class Car {
 
     @Override
     public String toString() {
-        return year + " " + make + " " + model;
+        if(renter != null){
+            return year + " " + make + " " + model + " - " + renter.getName();
+        }
+        else{
+            return year + " " + make + " " + model;
+        }
     }
 
     @Override
